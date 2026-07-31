@@ -1,0 +1,48 @@
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+  background: radial-gradient(circle at top left, #ede9fd 0%, var(--brand-bg) 55%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 36px 32px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.brand-logo {
+  height: 56px;
+  width: auto;
+  border-radius: var(--brand-radius-sm);
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin: 0 0 20px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.submit-btn {
+  height: 44px;
+  margin-top: 8px;
+  border-radius: var(--brand-radius-sm);
+}
+
+.error {
+  color: #c0392b;
+  font-size: 0.875rem;
+}

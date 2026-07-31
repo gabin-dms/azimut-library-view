@@ -1,0 +1,41 @@
+<h1 class="page-title">{{ 'nav.desk' | translate }}</h1>
+
+<div class="desk-grid">
+  <section class="surface-card panel">
+    <div class="panel-header">
+      <span class="panel-icon issue-icon">
+        <mat-icon>outbound</mat-icon>
+      </span>
+      <h2>{{ 'desk.issueTitle' | translate }}</h2>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>{{ 'desk.bookId' | translate }}</mat-label>
+      <input matInput type="number" [(ngModel)]="bookId" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>{{ 'desk.borrowerId' | translate }}</mat-label>
+      <input matInput type="number" [(ngModel)]="borrowerId" />
+    </mat-form-field>
+    <button mat-flat-button color="primary" class="full-width action-btn" [disabled]="busy()" (click)="issue()">
+      {{ 'desk.issue' | translate }}
+    </button>
+  </section>
+
+  <section class="surface-card panel">
+    <div class="panel-header">
+      <span class="panel-icon return-icon">
+        <mat-icon>call_received</mat-icon>
+      </span>
+      <h2>{{ 'desk.returnTitle' | translate }}</h2>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>{{ 'desk.loanId' | translate }}</mat-label>
+      <input matInput type="number" [(ngModel)]="returnLoanId" />
+    </mat-form-field>
+    <button mat-flat-button color="primary" class="full-width action-btn" [disabled]="busy()" (click)="processReturn()">
+      {{ 'desk.return' | translate }}
+    </button>
+  </section>
+</div>

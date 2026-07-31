@@ -1,0 +1,50 @@
+<h1 class="page-title">{{ 'profile.title' | translate }}</h1>
+
+<section class="surface-card panel avatar-panel">
+  <app-avatar [size]="88"></app-avatar>
+  <div class="avatar-actions">
+    <h2>{{ user()?.fullName }}</h2>
+    <p class="role-line">{{ user()?.matricule }} &middot; {{ user()?.role }}</p>
+    <div class="avatar-buttons">
+      <button mat-stroked-button type="button" [disabled]="uploadingAvatar()" (click)="avatarInput.click()">
+        {{ 'profile.changePhoto' | translate }}
+      </button>
+      <input
+        #avatarInput
+        type="file"
+        accept="image/png,image/jpeg,image/webp,image/gif"
+        (change)="onAvatarSelected($event)"
+        hidden
+      />
+      @if (user()?.hasAvatar) {
+        <button mat-button color="warn" type="button" (click)="removeAvatar()">
+          {{ 'profile.removePhoto' | translate }}
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="surface-card panel">
+  <h2>{{ 'profile.detailsTitle' | translate }}</h2>
+  <form (ngSubmit)="save()" #profileForm="ngForm" class="profile-form">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'profile.fullName' | translate }}</mat-label>
+      <input matInput name="fullName" [(ngModel)]="fullName" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'profile.email' | translate }}</mat-label>
+      <input matInput type="email" name="email" [(ngModel)]="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'profile.phone' | translate }}</mat-label>
+      <input matInput name="phone" [(ngModel)]="phone" />
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit" class="save-btn" [disabled]="profileForm.invalid || saving()">
+      {{ 'profile.save' | translate }}
+    </button>
+  </form>
+</section>

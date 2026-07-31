@@ -1,0 +1,77 @@
+<section class="hero">
+  <mat-icon class="hero-deco hero-deco-1">circle</mat-icon>
+  <mat-icon class="hero-deco hero-deco-2">circle</mat-icon>
+
+  <div class="hero-text">
+    <h1>{{ 'dashboard.greeting' | translate: { name: firstName() } }}</h1>
+    <p>{{ 'dashboard.heroSubtitle' | translate }}</p>
+    <a mat-stroked-button routerLink="/catalog" class="hero-cta">{{ 'dashboard.heroCta' | translate }}</a>
+  </div>
+
+  <mat-icon class="hero-illustration">space_dashboard</mat-icon>
+</section>
+
+<div class="stat-grid">
+  <article class="stat-card surface-card">
+    <div class="stat-header">
+      <mat-icon class="stat-icon">auto_stories</mat-icon>
+      <div>
+        <p class="stat-value">{{ totalBooks() ?? '—' }}</p>
+        <p class="stat-label">{{ 'dashboard.totalBooks' | translate }}</p>
+      </div>
+    </div>
+    <div class="stat-chart">
+      <canvas baseChart [type]="booksChartType" [data]="booksChartData" [options]="booksChartOptions"></canvas>
+    </div>
+  </article>
+
+  <article class="stat-card surface-card">
+    <div class="stat-header">
+      <mat-icon class="stat-icon">bookmark_border</mat-icon>
+      <div>
+        <p class="stat-value">{{ activeLoans() ?? '—' }}</p>
+        <p class="stat-label">{{ 'dashboard.activeLoans' | translate }}</p>
+      </div>
+    </div>
+    <div class="stat-chart">
+      <canvas baseChart [type]="loansChartType" [data]="loansChartData" [options]="loansChartOptions"></canvas>
+    </div>
+  </article>
+
+  <article class="stat-card surface-card">
+    <div class="stat-header">
+      <mat-icon class="stat-icon">receipt_long</mat-icon>
+      <div>
+        <p class="stat-value">{{ unpaidFines() ?? '—' }}</p>
+        <p class="stat-label">{{ 'dashboard.unpaidFines' | translate }}</p>
+      </div>
+    </div>
+    <div class="stat-chart">
+      <canvas baseChart [type]="finesChartType" [data]="finesChartData" [options]="finesChartOptions"></canvas>
+    </div>
+  </article>
+
+  <article class="stat-card surface-card">
+    <div class="stat-header">
+      <mat-icon class="stat-icon">event_available</mat-icon>
+      <div>
+        <p class="stat-value">{{ pendingReservations() ?? '—' }}</p>
+        <p class="stat-label">{{ 'dashboard.pendingReservations' | translate }}</p>
+      </div>
+    </div>
+    <div class="stat-chart">
+      <canvas baseChart [type]="reservationsChartType" [data]="reservationsChartData" [options]="reservationsChartOptions"></canvas>
+    </div>
+  </article>
+</div>
+
+<h2 class="section-title">{{ 'dashboard.quickLinks' | translate }}</h2>
+
+<div class="link-grid">
+  @for (link of visibleQuickLinks(); track link.path) {
+    <a class="link-card surface-card" [routerLink]="link.path">
+      <mat-icon>{{ link.icon }}</mat-icon>
+      <span>{{ link.label | translate }}</span>
+    </a>
+  }
+</div>

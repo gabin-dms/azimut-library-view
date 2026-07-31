@@ -1,0 +1,72 @@
+<div class="app-shell">
+  <aside class="sidebar surface-card">
+    <a class="brand" routerLink="/dashboard">
+      <img class="brand-logo" src="assets/logo.png" [alt]="'app.shortTitle' | translate" />
+    </a>
+
+    <nav class="nav-list">
+      @for (item of visibleNavItems(); track item.path) {
+        <a
+          class="nav-item"
+          [routerLink]="item.path"
+          routerLinkActive="active"
+        >
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.label | translate }}</span>
+        </a>
+      }
+    </nav>
+
+    <div class="sidebar-footer">
+      <mat-icon class="footer-icon">local_library</mat-icon>
+      <p class="footer-title">{{ 'app.footerTitle' | translate }}</p>
+      <p class="footer-subtitle">{{ 'app.footerSubtitle' | translate }}</p>
+    </div>
+  </aside>
+
+  <div class="main-column">
+    <header class="topbar">
+      <div class="topbar-search">
+        <mat-icon>search</mat-icon>
+        <input
+          type="text"
+          [placeholder]="'nav.search' | translate"
+          [(ngModel)]="searchQuery"
+          (keyup.enter)="searchCatalog()"
+        />
+      </div>
+
+      <div class="topbar-spacer"></div>
+
+      <button mat-icon-button [matMenuTriggerFor]="langMenu" [attr.aria-label]="'nav.language' | translate">
+        <mat-icon>translate</mat-icon>
+      </button>
+      <mat-menu #langMenu="matMenu">
+        <button mat-menu-item (click)="useLanguage('en')">English</button>
+        <button mat-menu-item (click)="useLanguage('fr')">Français</button>
+      </mat-menu>
+
+      <button mat-icon-button [matMenuTriggerFor]="userMenu" class="user-chip" [attr.aria-label]="authService.currentUser()?.fullName">
+        <app-avatar [size]="34"></app-avatar>
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <div class="user-menu-header">
+          <strong>{{ authService.currentUser()?.fullName }}</strong>
+          <span>{{ authService.currentUser()?.role }}</span>
+        </div>
+        <button mat-menu-item routerLink="/profile">
+          <mat-icon>person_outline</mat-icon>
+          <span>{{ 'nav.profile' | translate }}</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>{{ 'nav.logout' | translate }}</span>
+        </button>
+      </mat-menu>
+    </header>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

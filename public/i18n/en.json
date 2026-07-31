@@ -1,0 +1,117 @@
+{
+  "app": {
+    "title": "University Library",
+    "shortTitle": "LibraryOS",
+    "footerTitle": "Need help?",
+    "footerSubtitle": "Visit the front desk or ask a librarian for assistance."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "catalog": "Catalog",
+    "myLoans": "My Loans",
+    "resources": "Resources",
+    "desk": "Circulation Desk",
+    "admin": "Users",
+    "language": "Language",
+    "logout": "Log out",
+    "search": "Search books, authors...",
+    "profile": "My Profile"
+  },
+  "login": {
+    "title": "Sign in",
+    "matricule": "Matricule",
+    "password": "Password",
+    "togglePassword": "Show or hide password",
+    "submit": "Sign in",
+    "error": "Invalid matricule or password"
+  },
+  "dashboard": {
+    "greeting": "Welcome back, {{name}}",
+    "heroSubtitle": "Here's a quick overview of the library and your account.",
+    "heroCta": "Browse catalog",
+    "totalBooks": "Books in catalog",
+    "activeLoans": "Active loans",
+    "unpaidFines": "Unpaid fines",
+    "pendingReservations": "Pending reservations",
+    "quickLinks": "Quick links"
+  },
+  "catalog": {
+    "search": "Search by title or author",
+    "searchButton": "Search",
+    "available": "Available",
+    "reserve": "Reserve",
+    "noResults": "No books found",
+    "greeting": "Hi, {{name}}",
+    "heroSubtitle": "The library serves as a welcoming home for knowledge seekers and avid readers alike.",
+    "heroCta": "View my loans",
+    "popular": "Available now",
+    "by": "by"
+  },
+  "myLoans": {
+    "title": "My Loans",
+    "book": "Book",
+    "borrowed": "Borrowed",
+    "due": "Due",
+    "status": "Status",
+    "renew": "Renew",
+    "reservations": "My Reservations",
+    "cancel": "Cancel",
+    "noReservations": "No active reservations",
+    "fines": "Unpaid Fines",
+    "noFines": "No unpaid fines"
+  },
+  "desk": {
+    "issueTitle": "Issue a book",
+    "returnTitle": "Process a return",
+    "bookId": "Book ID",
+    "borrowerId": "Borrower ID",
+    "loanId": "Loan ID",
+    "issue": "Issue",
+    "return": "Return"
+  },
+  "admin": {
+    "createUser": "Create user",
+    "matricule": "Matricule",
+    "fullName": "Full name",
+    "email": "Email",
+    "password": "Temporary password",
+    "role": "Role",
+    "department": "Department",
+    "create": "Create",
+    "userList": "Users",
+    "status": "Status"
+  },
+  "resources": {
+    "title": "Teaching Resources",
+    "uploadTitle": "Drop a resource",
+    "resourceTitle": "Title",
+    "description": "Description",
+    "type": "Type",
+    "category": "Subject",
+    "newCategory": "New subject",
+    "addCategory": "Add",
+    "upload": "Upload",
+    "allCategories": "All subjects",
+    "allTypes": "All types",
+    "by": "by",
+    "download": "Download",
+    "remove": "Remove",
+    "noResults": "No teaching resources yet",
+    "types": {
+      "QUIZ": "Quiz",
+      "NOTES": "Notes",
+      "DOCUMENT": "Document",
+      "VIDEO": "Video"
+    }
+  },
+  "profile": {
+    "title": "My Profile",
+    "changePhoto": "Change photo",
+    "removePhoto": "Remove photo",
+    "detailsTitle": "Personal details",
+    "fullName": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "save": "Save changes"
+  }
+}

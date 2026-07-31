@@ -1,0 +1,50 @@
+<div class="login-page">
+  <div class="login-card surface-card">
+    <div class="brand">
+      <img class="brand-logo" src="assets/logo.png" [alt]="'app.shortTitle' | translate" />
+    </div>
+
+    <h1>{{ 'login.title' | translate }}</h1>
+
+    <form (ngSubmit)="submit()" #loginForm="ngForm">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'login.matricule' | translate }}</mat-label>
+        <input matInput name="matricule" [(ngModel)]="matricule" required autocomplete="username" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'login.password' | translate }}</mat-label>
+        <input
+          matInput
+          [type]="passwordVisible() ? 'text' : 'password'"
+          name="password"
+          [(ngModel)]="password"
+          required
+          autocomplete="current-password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="togglePasswordVisibility()"
+          [attr.aria-label]="'login.togglePassword' | translate"
+          [attr.aria-pressed]="passwordVisible()"
+        >
+          <mat-icon>{{ passwordVisible() ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      @if (errorMessage()) {
+        <p class="error">{{ errorMessage() | translate }}</p>
+      }
+
+      <button mat-flat-button color="primary" type="submit" class="full-width submit-btn" [disabled]="loginForm.invalid || loading()">
+        @if (loading()) {
+          <mat-spinner diameter="20"></mat-spinner>
+        } @else {
+          {{ 'login.submit' | translate }}
+        }
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+.page-title {
+  margin: 0 0 20px;
+}
+
+.section {
+  margin-bottom: 20px;
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: 1.05rem;
+  }
+}
+
+.full-width {
+  width: 100%;
+  background: transparent;
+}
+
+::ng-deep .mat-mdc-table {
+  background: transparent;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  span:first-child {
+    flex: 1;
+    font-weight: 500;
+  }
+}
+
+.status-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  background: #eef0f6;
+  color: var(--brand-ink-soft);
+
+  &.status-active,
+  &.status-pending {
+    background: #e6f6ee;
+    color: #1f9d55;
+  }
+
+  &.status-overdue {
+    background: #fdeaea;
+    color: #c0392b;
+  }
+
+  &.status-returned,
+  &.status-cancelled,
+  &.status-expired {
+    background: #eef0f6;
+    color: var(--brand-ink-soft);
+  }
+
+  &.status-fulfilled {
+    background: var(--brand-primary-light);
+    color: var(--brand-primary);
+  }
+}
+
+.fine-amount {
+  font-weight: 700;
+  color: #c0392b;
+}
+
+.empty-state {
+  color: var(--brand-ink-soft);
+  padding: 8px 0;
+}

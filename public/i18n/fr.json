@@ -1,0 +1,117 @@
+{
+  "app": {
+    "title": "Bibliothèque Universitaire",
+    "shortTitle": "LibraryOS",
+    "footerTitle": "Besoin d'aide ?",
+    "footerSubtitle": "Rendez-vous à l'accueil ou demandez à un bibliothécaire."
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "catalog": "Catalogue",
+    "myLoans": "Mes Emprunts",
+    "resources": "Ressources",
+    "desk": "Comptoir de Prêt",
+    "admin": "Utilisateurs",
+    "language": "Langue",
+    "logout": "Déconnexion",
+    "search": "Rechercher livres, auteurs...",
+    "profile": "Mon Profil"
+  },
+  "login": {
+    "title": "Connexion",
+    "matricule": "Matricule",
+    "password": "Mot de passe",
+    "togglePassword": "Afficher ou masquer le mot de passe",
+    "submit": "Se connecter",
+    "error": "Matricule ou mot de passe invalide"
+  },
+  "dashboard": {
+    "greeting": "Content de vous revoir, {{name}}",
+    "heroSubtitle": "Voici un aperçu rapide de la bibliothèque et de votre compte.",
+    "heroCta": "Parcourir le catalogue",
+    "totalBooks": "Livres au catalogue",
+    "activeLoans": "Emprunts en cours",
+    "unpaidFines": "Amendes impayées",
+    "pendingReservations": "Réservations en attente",
+    "quickLinks": "Liens rapides"
+  },
+  "catalog": {
+    "search": "Rechercher par titre ou auteur",
+    "searchButton": "Rechercher",
+    "available": "Disponible",
+    "reserve": "Réserver",
+    "noResults": "Aucun livre trouvé",
+    "greeting": "Bonjour, {{name}}",
+    "heroSubtitle": "La bibliothèque est un lieu accueillant pour les chercheurs de savoir et les lecteurs passionnés.",
+    "heroCta": "Voir mes emprunts",
+    "popular": "Disponibles maintenant",
+    "by": "par"
+  },
+  "myLoans": {
+    "title": "Mes Emprunts",
+    "book": "Livre",
+    "borrowed": "Emprunté le",
+    "due": "À rendre le",
+    "status": "Statut",
+    "renew": "Renouveler",
+    "reservations": "Mes Réservations",
+    "cancel": "Annuler",
+    "noReservations": "Aucune réservation active",
+    "fines": "Amendes impayées",
+    "noFines": "Aucune amende impayée"
+  },
+  "desk": {
+    "issueTitle": "Prêter un livre",
+    "returnTitle": "Traiter un retour",
+    "bookId": "ID du livre",
+    "borrowerId": "ID de l'emprunteur",
+    "loanId": "ID du prêt",
+    "issue": "Prêter",
+    "return": "Retourner"
+  },
+  "admin": {
+    "createUser": "Créer un utilisateur",
+    "matricule": "Matricule",
+    "fullName": "Nom complet",
+    "email": "E-mail",
+    "password": "Mot de passe temporaire",
+    "role": "Rôle",
+    "department": "Département",
+    "create": "Créer",
+    "userList": "Utilisateurs",
+    "status": "Statut"
+  },
+  "resources": {
+    "title": "Ressources Pédagogiques",
+    "uploadTitle": "Déposer une ressource",
+    "resourceTitle": "Titre",
+    "description": "Description",
+    "type": "Type",
+    "category": "Matière",
+    "newCategory": "Nouvelle matière",
+    "addCategory": "Ajouter",
+    "upload": "Téléverser",
+    "allCategories": "Toutes les matières",
+    "allTypes": "Tous les types",
+    "by": "par",
+    "download": "Télécharger",
+    "remove": "Supprimer",
+    "noResults": "Aucune ressource pédagogique pour le moment",
+    "types": {
+      "QUIZ": "Quiz",
+      "NOTES": "Notes",
+      "DOCUMENT": "Document",
+      "VIDEO": "Vidéo"
+    }
+  },
+  "profile": {
+    "title": "Mon Profil",
+    "changePhoto": "Changer la photo",
+    "removePhoto": "Supprimer la photo",
+    "detailsTitle": "Informations personnelles",
+    "fullName": "Nom complet",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "save": "Enregistrer"
+  }
+}

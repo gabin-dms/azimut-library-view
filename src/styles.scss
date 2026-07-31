@@ -1,0 +1,89 @@
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$violet-palette,
+        tertiary: mat.$magenta-palette,
+      ),
+      typography: (
+        plain-family: 'Inter, sans-serif',
+        brand-family: 'Inter, sans-serif',
+      ),
+      density: 0,
+    )
+  );
+}
+
+:root {
+  // Brand palette — matches the reference design's indigo/violet SaaS aesthetic.
+  --brand-primary: #6c5dd3;
+  --brand-primary-dark: #5b4bc4;
+  --brand-primary-light: #ede9fd;
+  --brand-accent: #ff754c;
+  --brand-ink: #1e1b39;
+  --brand-ink-soft: #6e6a8c;
+  --brand-bg: #f3f1fb;
+  --brand-surface: #ffffff;
+
+  // Elevation + shape tokens shared across custom components.
+  --brand-radius-lg: 24px;
+  --brand-radius-md: 16px;
+  --brand-radius-sm: 12px;
+  --brand-shadow-card: 0 4px 24px rgba(76, 63, 148, 0.08);
+  --brand-shadow-raised: 0 12px 32px rgba(76, 63, 148, 0.16);
+
+  // Cycled pastel gradients for book cover tiles (no real cover art in the MVP catalog).
+  --cover-gradient-1: linear-gradient(135deg, #cfe0fb 0%, #9fbdf7 100%);
+  --cover-gradient-2: linear-gradient(135deg, #ffe3c9 0%, #ffb37b 100%);
+  --cover-gradient-3: linear-gradient(135deg, #e6dcfb 0%, #b9a0f2 100%);
+  --cover-gradient-4: linear-gradient(135deg, #ffd9e6 0%, #ff9dbb 100%);
+  --cover-gradient-5: linear-gradient(135deg, #cdf2e6 0%, #86dfc0 100%);
+  --cover-gradient-6: linear-gradient(135deg, #fff3bf 0%, #ffd873 100%);
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  background: var(--brand-bg);
+  color: var(--brand-ink);
+  font: var(--mat-sys-body-medium);
+  font-family: 'Inter', var(--mat-sys-body-medium-font, sans-serif);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+
+h1, h2, h3, h4 {
+  color: var(--brand-ink);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+// Angular Material renders <mat-icon> text content in this class; swap to the
+// rounded glyph set loaded in index.html to match the reference's soft icon style.
+.mat-icon {
+  font-family: 'Material Icons Round';
+}
+
+// Shared "floating card" surface used by every feature page to match the
+// reference design's white rounded panels on a lavender backdrop.
+.surface-card {
+  background: var(--brand-surface);
+  border-radius: var(--brand-radius-md);
+  box-shadow: var(--brand-shadow-card);
+  padding: 24px;
+}
+
+/* You can add global styles to this file, and also import other style files */

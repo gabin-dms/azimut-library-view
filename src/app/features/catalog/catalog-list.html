@@ -1,0 +1,56 @@
+<section class="hero">
+  <mat-icon class="hero-deco hero-deco-1">circle</mat-icon>
+  <mat-icon class="hero-deco hero-deco-2">circle</mat-icon>
+
+  <div class="hero-text">
+    <h1>{{ 'catalog.greeting' | translate: { name: firstName() } }}</h1>
+    <p>{{ 'catalog.heroSubtitle' | translate }}</p>
+    <a mat-stroked-button routerLink="/my-loans" class="hero-cta">{{ 'catalog.heroCta' | translate }}</a>
+  </div>
+
+  <mat-icon class="hero-illustration">local_library</mat-icon>
+</section>
+
+<div class="search-bar surface-card">
+  <mat-icon>search</mat-icon>
+  <input
+    type="text"
+    [(ngModel)]="query"
+    (keyup.enter)="search()"
+    [placeholder]="'catalog.search' | translate"
+  />
+  <button mat-flat-button color="primary" (click)="search()">{{ 'catalog.searchButton' | translate }}</button>
+</div>
+
+<h2 class="section-title">{{ 'catalog.popular' | translate }}</h2>
+
+<div class="book-grid">
+  @for (book of books(); track book.id) {
+    <article class="book-card surface-card">
+      <div class="book-cover" [style.background]="coverGradient(book)">
+        <mat-icon class="cover-icon">menu_book</mat-icon>
+        <span class="badge" [class.badge-warn]="book.availableCopies === 0">
+          {{ book.availableCopies }}/{{ book.totalCopies }}
+        </span>
+      </div>
+      <div class="book-body">
+        <h3>{{ book.title }}</h3>
+        <p class="authors">{{ 'catalog.by' | translate }} {{ book.authors }}</p>
+        @if (book.availableCopies === 0) {
+          <button mat-flat-button color="primary" class="reserve-btn" (click)="reserve(book)">
+            {{ 'catalog.reserve' | translate }}
+          </button>
+        } @else {
+          <span class="available-tag">
+            <mat-icon>check_circle</mat-icon>
+            {{ 'catalog.available' | translate }}
+          </span>
+        }
+      </div>
+    </article>
+  } @empty {
+    @if (!loading()) {
+      <p class="empty-state">{{ 'catalog.noResults' | translate }}</p>
+    }
+  }
+</div>

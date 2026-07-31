@@ -1,0 +1,70 @@
+<h1 class="page-title">{{ 'myLoans.title' | translate }}</h1>
+
+<section class="surface-card section">
+  <table mat-table [dataSource]="loans()" class="full-width">
+    <ng-container matColumnDef="bookTitle">
+      <th mat-header-cell *matHeaderCellDef>{{ 'myLoans.book' | translate }}</th>
+      <td mat-cell *matCellDef="let loan">{{ loan.bookTitle }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="borrowDate">
+      <th mat-header-cell *matHeaderCellDef>{{ 'myLoans.borrowed' | translate }}</th>
+      <td mat-cell *matCellDef="let loan">{{ loan.borrowDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dueDate">
+      <th mat-header-cell *matHeaderCellDef>{{ 'myLoans.due' | translate }}</th>
+      <td mat-cell *matCellDef="let loan">{{ loan.dueDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>{{ 'myLoans.status' | translate }}</th>
+      <td mat-cell *matCellDef="let loan">
+        <span class="status-chip" [class]="'status-' + loan.status.toLowerCase()">{{ loan.status }}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let loan">
+        @if (loan.status === 'ACTIVE') {
+          <button mat-button color="primary" (click)="renew(loan)">{{ 'myLoans.renew' | translate }}</button>
+        }
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="loanColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: loanColumns"></tr>
+  </table>
+</section>
+
+<div class="two-column">
+  <section class="surface-card section">
+    <h2>{{ 'myLoans.reservations' | translate }}</h2>
+    @for (reservation of reservations(); track reservation.id) {
+      <div class="list-row">
+        <span>{{ reservation.bookTitle }}</span>
+        <span class="status-chip" [class]="'status-' + reservation.status.toLowerCase()">{{ reservation.status }}</span>
+        @if (reservation.status === 'PENDING' || reservation.status === 'FULFILLED') {
+          <button mat-icon-button color="warn" (click)="cancelReservation(reservation)" aria-label="Cancel">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+      </div>
+    } @empty {
+      <p class="empty-state">{{ 'myLoans.noReservations' | translate }}</p>
+    }
+  </section>
+
+  <section class="surface-card section">
+    <h2>{{ 'myLoans.fines' | translate }}</h2>
+    @for (fine of fines(); track fine.id) {
+      <div class="list-row">
+        <span>{{ fine.reason }}</span>
+        <span class="fine-amount">{{ fine.amountXaf }} XAF</span>
+      </div>
+    } @empty {
+      <p class="empty-state">{{ 'myLoans.noFines' | translate }}</p>
+    }
+  </section>
+</div>

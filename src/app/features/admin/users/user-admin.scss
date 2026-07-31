@@ -1,0 +1,43 @@
+.page-title {
+  margin: 0 0 20px;
+}
+
+.panel {
+  margin-bottom: 20px;
+
+  h2 {
+    margin: 0 0 16px;
+    font-size: 1.05rem;
+  }
+}
+
+.user-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+  align-items: start;
+}
+
+.create-btn {
+  grid-column: 1 / -1;
+  justify-self: start;
+  height: 42px;
+  padding: 0 24px;
+  border-radius: var(--brand-radius-sm);
+  margin-top: 8px;
+}
+
+.full-width {
+  width: 100%;
+  background: transparent;
+}
+
+.role-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--brand-primary-light);
+  color: var(--brand-primary);
+}

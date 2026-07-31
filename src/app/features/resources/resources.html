@@ -1,0 +1,107 @@
+<h1 class="page-title">{{ 'resources.title' | translate }}</h1>
+
+@if (canManage()) {
+  <section class="surface-card panel">
+    <h2>{{ 'resources.uploadTitle' | translate }}</h2>
+    <div class="upload-form">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'resources.resourceTitle' | translate }}</mat-label>
+        <input matInput [(ngModel)]="uploadTitle" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'resources.type' | translate }}</mat-label>
+        <mat-select [(ngModel)]="uploadType">
+          @for (type of resourceTypes; track type) {
+            <mat-option [value]="type">{{ ('resources.types.' + type) | translate }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'resources.category' | translate }}</mat-label>
+        <mat-select [(ngModel)]="uploadCategoryId">
+          @for (category of categories(); track category.id) {
+            <mat-option [value]="category.id">{{ category.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="description-field">
+        <mat-label>{{ 'resources.description' | translate }}</mat-label>
+        <input matInput [(ngModel)]="uploadDescription" />
+      </mat-form-field>
+    </div>
+
+    <div class="quick-add-category">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'resources.newCategory' | translate }}</mat-label>
+        <input matInput [(ngModel)]="newCategoryName" (keyup.enter)="addCategory()" />
+      </mat-form-field>
+      <button mat-stroked-button (click)="addCategory()">{{ 'resources.addCategory' | translate }}</button>
+    </div>
+
+    <div class="file-row">
+      <input type="file" (change)="onFileSelected($event)" />
+      <button mat-flat-button color="primary" [disabled]="uploading()" (click)="upload()">
+        {{ 'resources.upload' | translate }}
+      </button>
+    </div>
+  </section>
+}
+
+<section class="surface-card panel">
+  <div class="filters">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'resources.category' | translate }}</mat-label>
+      <mat-select [(ngModel)]="filterCategoryId" (selectionChange)="loadResources()">
+        <mat-option [value]="null">{{ 'resources.allCategories' | translate }}</mat-option>
+        @for (category of categories(); track category.id) {
+          <mat-option [value]="category.id">{{ category.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'resources.type' | translate }}</mat-label>
+      <mat-select [(ngModel)]="filterType" (selectionChange)="loadResources()">
+        <mat-option [value]="null">{{ 'resources.allTypes' | translate }}</mat-option>
+        @for (type of resourceTypes; track type) {
+          <mat-option [value]="type">{{ ('resources.types.' + type) | translate }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="resource-grid">
+    @for (resource of resources(); track resource.id) {
+      <article class="resource-card">
+        <div class="resource-icon">
+          <mat-icon>{{ typeIcon(resource.type) }}</mat-icon>
+        </div>
+        <div class="resource-body">
+          <h3>{{ resource.title }}</h3>
+          <p class="meta">{{ resource.categoryName }} &middot; {{ formatSize(resource.fileSizeBytes) }}</p>
+          <p class="uploader">{{ 'resources.by' | translate }} {{ resource.uploadedByName }}</p>
+          @if (resource.description) {
+            <p class="description">{{ resource.description }}</p>
+          }
+        </div>
+        <div class="resource-actions">
+          <button mat-icon-button (click)="download(resource)" [attr.aria-label]="'resources.download' | translate">
+            <mat-icon>download</mat-icon>
+          </button>
+          @if (canDelete(resource)) {
+            <button mat-icon-button color="warn" (click)="remove(resource)" [attr.aria-label]="'resources.remove' | translate">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          }
+        </div>
+      </article>
+    } @empty {
+      @if (!loading()) {
+        <p class="empty-state">{{ 'resources.noResults' | translate }}</p>
+      }
+    }
+  </div>
+</section>

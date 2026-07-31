@@ -1,0 +1,57 @@
+.page-title {
+  margin: 0 0 20px;
+}
+
+.desk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  h2 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+}
+
+.panel-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--brand-radius-sm);
+  flex: 0 0 auto;
+
+  &.issue-icon {
+    background: var(--cover-gradient-1);
+    color: #1e4f9c;
+  }
+
+  &.return-icon {
+    background: var(--cover-gradient-5);
+    color: #17714f;
+  }
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.action-btn {
+  height: 44px;
+  border-radius: var(--brand-radius-sm);
+  margin-top: 8px;
+}
